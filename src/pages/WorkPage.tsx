@@ -138,13 +138,13 @@ const VideoCard: React.FC<VideoCardProps> = ({ item }) => {
         </video>
       </div>
       
-      <div className="mt-4 sm:mt-6 flex flex-col gap-4 text-center">
+      {/* <div className="mt-4 sm:mt-6 flex flex-col gap-4 text-center">
         <div className="flex justify-center">
           <button className="text-[10px] sm:text-xs font-bold uppercase tracking-widest border border-white/20 px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all">
             Case Study
           </button>
         </div>
-      </div>
+      </div> */}
     </motion.div>
   );
 };
