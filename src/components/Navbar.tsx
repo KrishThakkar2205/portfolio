@@ -10,7 +10,7 @@ export default function Navbar() {
         </Link>
         <div className="hidden md:flex space-x-6 lg:space-x-8 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">
           <Link to="/work" className="hover:text-orange-500 transition-colors">Work</Link>
-          <a href="/#about" className="hover:text-orange-500 transition-colors">About Us</a>
+          {/* <a href="/#about" className="hover:text-orange-500 transition-colors">About Us</a> */}
           <a href="https://contact.influrunner.com/" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors">Contact</a>
         </div>
         <a 
