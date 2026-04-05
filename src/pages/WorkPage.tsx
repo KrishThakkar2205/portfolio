@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 const projects = [
   {
@@ -56,29 +56,39 @@ const projects = [
 
 interface VideoCardProps {
   item: typeof projects[0];
+  isActive: boolean;
+  onPlay: (id: number) => void;
 }
 
-const VideoCard: React.FC<VideoCardProps> = ({ item }) => {
+const VideoCard: React.FC<VideoCardProps> = ({ item, isActive, onPlay }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-        // When user explicitly clicks play, we can unmute if they want audio
-        setIsMuted(false);
-      }
-      setIsPlaying(!isPlaying);
+  // Pause this video whenever another card becomes active
+  useEffect(() => {
+    if (!isActive && isPlaying) {
+      videoRef.current?.pause();
+      setIsPlaying(false);
     }
-  };
+  }, [isActive]);
+
+  const togglePlay = useCallback(() => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      onPlay(item.id); // notify parent → pauses all others
+      videoRef.current.play();
+      setIsPlaying(true);
+      setIsMuted(false);
+    }
+  }, [isPlaying, item.id, onPlay]);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsMuted(!isMuted);
+    setIsMuted((m) => !m);
   };
 
   return (
@@ -150,6 +160,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ item }) => {
 };
 
 export default function WorkPage() {
+  const [activeVideoId, setActiveVideoId] = useState<number | null>(null);
+
+  const handlePlay = useCallback((id: number) => {
+    setActiveVideoId(id);
+  }, []);
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
       <Navbar />
@@ -168,7 +183,12 @@ export default function WorkPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
             {projects.map((item) => (
-              <VideoCard key={item.id} item={item} />
+              <VideoCard
+                key={item.id}
+                item={item}
+                isActive={activeVideoId === item.id}
+                onPlay={handlePlay}
+              />
             ))}
           </div>
         </div>
