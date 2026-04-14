@@ -46,11 +46,18 @@ const projects = [
     title:"Real Estate\nSharddha Pioneer",
     category:"Real Estate",
     videoUrl:"/shraddha-pioneer.mp4"
-  },{
+  },
+  {
     id:8,
     title:"Gill Sir Spoken English",
     category:"Education",
     videoUrl:"/Gill Sir.mp4"
+  },
+  {
+    id:9,
+    title:"Gill Sir Spoken English Featured Campaign",
+    category:"Education",
+    videoUrl:"/Gill Sir Savan.mp4"
   }
 ];
 
