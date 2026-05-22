@@ -58,6 +58,22 @@ const projects = [
     title:"Gill Sir Spoken English Featured Campaign",
     category:"Education",
     videoUrl:"/Gill Sir Savan.mp4"
+  },{
+    id:10,
+    title:"Residential Real Estate By Sharddha Pioneer",
+    category:"Real Estate",
+    videoUrl:"/PoonamBhatt-ShraddhaPioneer.mp4"
+  },{
+    id:11,
+    title:"Industrial Real Estate",
+    category:"Real Estate",
+    videoUrl:"/DeepBhatt-Industrial.mp4"
+  },
+  {
+    id:12,
+    title:"Influencer Crowd Work-Ukiyo",
+    category:"Experiential Campaign",
+    videoUrl:"/KashishCrowdWork-Ukiyo.mp4"
   }
 ];
 

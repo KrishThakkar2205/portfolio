@@ -80,7 +80,7 @@ export default function HomePage() {
               "Paribindu Jewels", "Lord Patrick", "Puffing the LIVE PUFF", "Gill sir", 
               "Vidhya Group Tuition", "Shraddha Pioneer", "The Brand Gallery", "Tummy Bites",
               "Paribindu Jewels", "Lord Patrick", "Puffing the LIVE PUFF", "Gill sir", 
-              "Vidhya Group Tuition", "Shraddha Pioneer", "The Brand Gallery", "Tummy Bites"
+              "Vidhya Group Tuition", "Shraddha Pioneer", "The Brand Gallery", "Tummy Bites","Adaa By Nj","Gitanjali Enterprise","Ukiyo"
             ].map((client, index) => (
               <span 
                 key={index} 
